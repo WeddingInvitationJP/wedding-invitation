@@ -88,7 +88,6 @@ const MainPage = () => {
 
   const toggleMusic = () => {
     setMusicPlaying(!musicPlaying);
-    // Aquí puedes añadir la lógica para reproducir/pausar la música
   };
 
   return (
@@ -112,7 +111,7 @@ const MainPage = () => {
         </Typography>
       </ContentBox>
       <Typography variant="subtitle1" sx={{ mt: 2, fontStyle: 'italic', position: 'relative', zIndex: 1 }}>
-          "Todos somos mortales, hasta el primer beso y la segunda copa de vino"
+          "Todos somos mortales, hasta el primer beso y la segunda copa de vino."
         </Typography>
       <Countdown eventDate="2024-09-27T19:30:00" />
       <Ceremony />
