@@ -6,16 +6,8 @@ import PersonIcon from '@mui/icons-material/Person';
 import MusicNoteIcon from '@mui/icons-material/MusicNote';
 import LinkIcon from '@mui/icons-material/Link';
 import CloseIcon from '@mui/icons-material/Close';
-import TitleSection from './TitleSection';
-
-const PartyContainer = styled(Box)({
-  padding: '20px',
-  backgroundColor: '#fff',
-  borderRadius: '10px',
-  boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
-  margin: '20px 0',
-  textAlign: 'center',
-});
+import { CardComponent } from './cards/CardComponent';
+import { CardIcon } from './cards/CardIcon';
 
 const TitleText = styled(Typography)({
   fontWeight: 'bold',
@@ -24,19 +16,36 @@ const TitleText = styled(Typography)({
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
+  marginBottom: '20px',
+  marginTop: '20px'
+});
+
+const MusicIconContainer = styled(Box)({
+  position: 'absolute',
+  top: '-40px',
+  left: '50%',
+  transform: 'translateX(-50%)',
+  backgroundColor: '#fff',
+  borderRadius: '50%',
+  boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
+  padding: '10px',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  width: '60px',
+  height: '60px',
 });
 
 const MusicIcon = styled(LibraryMusicIcon)({
   fontSize: '2rem',
   color: '#d28e79',
-  marginBottom: '10px',
-});
+}); 
 
 const SuggestButton = styled(Button)({
   backgroundColor: '#d28e79',
-  width: '80%',
   color: '#fff',
   marginTop: '20px',
+  width:'80%',
   '&:hover': {
     backgroundColor: '#b36b53',
   },
@@ -48,11 +57,12 @@ const ModalContainer = styled(Box)({
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: '90%',
+  maxWidth: '400px',
   backgroundColor: '#fff',
   borderRadius: '10px',
   boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
-  padding: '20px',
-  textAlign: 'center',
+  padding: '30px',
+  textAlign: 'center'
 });
 
 const CloseButton = styled(IconButton)({
@@ -80,27 +90,29 @@ const Party = () => {
 
   return (
     <>
-      <TitleSection title="La fiesta" />
-
-      <PartyContainer>
+      <CardComponent>
+        <CardIcon>
+          <MusicIcon />
+        </CardIcon>
         <TitleText>
-         <MusicIcon sx={{marginRight: 2}}/>
-         MÚSICA
+          MÚSICA
         </TitleText>
-        <Typography variant="body1" style={{marginTop: 20}}>
+        <Typography variant="body1">
           ¿Cuál es la canción que no debe faltar en la PlayList de la fiesta?
         </Typography>
         <SuggestButton onClick={handleOpen}>
           Sugerir Canción
         </SuggestButton>
-      </PartyContainer>
+      </CardComponent>
       <Modal open={open} onClose={handleClose}>
         <ModalContainer>
           <CloseButton onClick={handleClose}>
             <CloseIcon />
           </CloseButton>
-          <MusicIcon sx={{ fontSize: '3rem', marginBottom: '10px' }} />
-          <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#855D41', marginBottom: '20px' }}>
+          <MusicIconContainer>
+            <MusicIcon />
+          </MusicIconContainer>
+          <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#855D41', marginTop: '40px', marginBottom: '20px' }}>
             Sugerir Canción
           </Typography>
           <TextField

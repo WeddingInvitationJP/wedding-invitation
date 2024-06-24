@@ -10,6 +10,7 @@ import Party from './Party';
 import Confirmation from './Confirmation';
 import Detail from './Detail';
 import backgroundImage from '../assets/example.jpg'; // Asegúrate de que la ruta sea correcta
+import '../styles.css'; // Asegúrate de importar el CSS aquí
 
 const MainContainer = styled(Box)({
   display: 'flex',
@@ -90,6 +91,7 @@ const MainPage = () => {
     setMusicPlaying(!musicPlaying);
   };
 
+
   return (
     <MainContainer>
         <AppBar position="fixed" sx={{ background: 'transparent', boxShadow: 'none' }}>
@@ -111,13 +113,13 @@ const MainPage = () => {
         </Typography>
       </ContentBox>
       <Typography variant="subtitle1" sx={{ mt: 2, fontStyle: 'italic', position: 'relative', zIndex: 1 }}>
-          "Todos somos mortales, hasta el primer beso y la segunda copa de vino."
-        </Typography>
+        "Todos somos mortales, hasta el primer beso y la segunda copa de vino."
+      </Typography>
       <Countdown eventDate="2024-09-27T19:30:00" />
       <Ceremony />
       <Party />
       <Confirmation />
-      <Detail />
+        <Detail />
       <FloatingButton onClick={toggleMusic}>
         {musicPlaying ? <PauseIcon /> : <MusicNoteIcon />}
       </FloatingButton>

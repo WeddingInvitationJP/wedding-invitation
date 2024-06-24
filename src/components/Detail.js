@@ -5,6 +5,8 @@ import CloseIcon from '@mui/icons-material/Close';
 import FileCopyIcon from '@mui/icons-material/FileCopy';
 import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
 import TitleSection from './TitleSection';
+import { CardComponent } from './cards/CardComponent';
+import { CardIcon } from './cards/CardIcon';
 
 const DetailContainer = styled(Box)({
   padding: '20px',
@@ -16,14 +18,15 @@ const DetailContainer = styled(Box)({
 });
 
 const ThankYouText = styled(Typography)({
-  fontWeight: 'bold',
-  fontSize: '1.2rem',
+  //fontWeight: 'bold',
+  //fontSize: '1.2rem',
   color: '#855D41',
 });
 
 const DetailButton = styled(Button)({
   backgroundColor: '#d28e79',
   color: '#fff',
+  width: '80%',
   marginTop: '20px',
   '&:hover': {
     backgroundColor: '#b36b53',
@@ -63,6 +66,17 @@ const CopyMessage = styled(Typography)({
   fontSize: '0.8rem',
   marginTop: '10px',
 });
+const GiftIcon = styled(CardGiftcardIcon)({
+  fontSize: '2rem',
+  color: '#d28e79',
+});
+
+const TitleText = styled(Typography)({
+  fontWeight: 'bold',
+  fontSize: '1.5rem',
+  marginTop: '2px',
+  color: '#855D41',
+});
 
 const Detail = () => {
   const [open, setOpen] = useState(false);
@@ -80,27 +94,32 @@ const Detail = () => {
 
   return (
     <>
-      <TitleSection title="Detalle" />
-      <DetailContainer>
-        <CardGiftcardIcon sx={{ fontSize: '2rem', color: '#d28e79', marginBottom: '10px' }} />
+      <CardComponent>
+        <TitleText>Detalle</TitleText>
+        <CardIcon>
+          <GiftIcon />
+        </CardIcon>
         <ThankYouText>
-          Agradecemos de corazón a todos los que puedan asistir a nuestro evento. Nos encantaría contar con ustedes en este día tan especial.
+         
         </ThankYouText>
         <DetailButton onClick={handleOpen}>
           Más información
         </DetailButton>
-      </DetailContainer>
+      </CardComponent>
+      <br/>
       <Modal open={open} onClose={handleClose}>
         <ModalContainer>
           <CloseButton onClick={handleClose}>
             <CloseIcon />
           </CloseButton>
-          <CardGiftcardIcon sx={{ fontSize: '3rem', color: '#d28e79', marginBottom: '20px' }} />
+          <CardIcon>
+            <GiftIcon></GiftIcon>
+          </CardIcon>
           <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#855D41', marginBottom: '20px' }}>
-            Si desean hacernos un detalle...
+            Nuestro mayor regalo es vuestra presencia
           </Typography>
           <Typography variant="body1" sx={{ marginBottom: '20px', color: '#855D41' }}>
-            Pueden aportar en el siguiente número de cuenta:
+            Y ,si en el caso, quieres tener un detalle con nostros, puedes aportar aquí:
           </Typography>
           <Box sx={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
             <TextField
@@ -113,7 +132,12 @@ const Detail = () => {
               <FileCopyIcon />
             </IconButton>
           </Box>
-          {copyMessage && <CopyMessage>{copyMessage}</CopyMessage>}
+          {copyMessage && 
+            <>
+              <CopyMessage>{copyMessage}</CopyMessage>
+            </>
+            }
+         
         </ModalContainer>
       </Modal>
     </>

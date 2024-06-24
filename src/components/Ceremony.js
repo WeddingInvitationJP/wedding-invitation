@@ -1,59 +1,16 @@
 import React from 'react';
 import { Box, Typography, Button } from '@mui/material';
 import { styled } from '@mui/system';
-import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import AddAlarmIcon from '@mui/icons-material/AddAlarm';
 import DirectionsIcon from '@mui/icons-material/Directions';
-import TitleSection from './TitleSection';
+import EventAvailableIcon from '@mui/icons-material/EventAvailable';
+import { CardComponent } from './cards/CardComponent';
+import { CardIcon } from './cards/CardIcon';
 
-const CeremonyContainer = styled(Box)({
-  width: '100%',
-  padding: '20px',
-  backgroundColor: '#fff',
-  borderRadius: '10px',
-  boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
-  margin: '20px 0',
-  textAlign: 'center',
-});
-
-const TitleContainer = styled(Box)({
-  marginTop: '25%',
-  textAlign: 'center',
-  marginBottom: '20px',
-});
-
-const TitleText = styled(Typography)({
-  backgroundColor: '#855D41', // Color marrón cálido
-  color: '#fff',
-  padding: '10px 20px',
-  borderRadius: '5px',
-  fontWeight: 'bold',
-  fontSize: '1.5rem',
-  display: 'inline-block',
-  position: 'relative',
-  '&::before': {
-    content: '""',
-    position: 'absolute',
-    left: '-20px',
-    top: '50%',
-    transform: 'translateY(-50%)',
-    borderLeft: '10px solid transparent',
-    borderRight: '10px solid #855D41',
-    borderTop: '10px solid transparent',
-    borderBottom: '10px solid transparent',
-  },
-  '&::after': {
-    content: '""',
-    position: 'absolute',
-    right: '-20px',
-    top: '50%',
-    transform: 'translateY(-50%)',
-    borderLeft: '10px solid #855D41',
-    borderRight: '10px solid transparent',
-    borderTop: '10px solid transparent',
-    borderBottom: '10px solid transparent',
-  },
+const CeremonyIcon = styled(EventAvailableIcon)({
+  fontSize: '2rem',
+  color: '#d28e79',
 });
 
 const Section = styled(Box)({
@@ -80,10 +37,11 @@ const Ceremony = () => {
 
   return (
     <>
-      <TitleSection title="Ceremonia" />
-      <CeremonyContainer>
-        <Section>
-        <CalendarTodayIcon sx={{ color: '#d28e79', fontSize: '2rem', marginBottom: '10px' }} />
+      <CardComponent>
+        <CardIcon>
+          <CeremonyIcon />
+        </CardIcon>
+        <Section marginTop={2}>
         <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#855D41' }}>DÍA</Typography>
           <Typography variant="body1">Viernes 27 de Septiembre - 19.30h</Typography>
           <Button
@@ -110,7 +68,7 @@ const Ceremony = () => {
             Cómo llegar
           </Button>
         </Section>
-      </CeremonyContainer>
+      </CardComponent>
     </>
   );
 };

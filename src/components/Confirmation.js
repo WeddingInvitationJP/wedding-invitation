@@ -5,7 +5,15 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import PersonIcon from '@mui/icons-material/Person';
 import CloseIcon from '@mui/icons-material/Close';
 import DirectionsBusIcon from '@mui/icons-material/DirectionsBus';
+import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
 import TitleSection from './TitleSection';
+import { launchConfetti } from './utils/confeti';
+import { CardComponent } from './cards/CardComponent';
+import CheckIcon from '@mui/icons-material/Check';
+import { CardIcon } from './cards/CardIcon';
+import LocalActivityIcon from '@mui/icons-material/LocalActivity';
+import VerifiedIcon from '@mui/icons-material/Verified';
+import busGif from '../assets/bus.gif'; // Asegúrate de que la ruta es correcta
 
 const ConfirmationContainer = styled(Box)({
   padding: '20px',
@@ -25,6 +33,7 @@ const TitleText = styled(Typography)({
 const ConfirmButton = styled(Button)({
   backgroundColor: '#d28e79',
   color: '#fff',
+  width: '80%',
   marginTop: '20px',
   '&:hover': {
     backgroundColor: '#b36b53',
@@ -59,17 +68,25 @@ const IconButtonStyled = styled(IconButton)({
   alignItems: 'center',
 });
 
-const BusIcon = styled(DirectionsBusIcon)({
+const VerifiedIconStyled = styled(VerifiedIcon)({
+  fontSize: '2rem',
+  color: '#d28e79'
+});
+
+const ConfirmationIcon = styled(LocalActivityIcon)({
   fontSize: '2rem',
   color: '#d28e79',
-  marginRight: '8px',
 });
+
 
 const Confirmation = () => {
   const [needsTransport, setNeedsTransport] = useState(false);
   const [open, setOpen] = useState(false);
 
-  const handleOpen = () => setOpen(true);
+  const handleOpen = () => {
+    launchConfetti();
+    setTimeout(()=> { setOpen(true)}, [300])
+  };
   const handleClose = () => setOpen(false);
 
   const handleSendMessage = (recipient) => {
@@ -77,12 +94,16 @@ const Confirmation = () => {
     const whatsappUrl = `https://wa.me/${recipient}?text=${encodeURIComponent(baseMessage)}`;
     window.open(whatsappUrl, '_blank');
     handleClose();
+    launchConfetti(); // Lanza el confeti al confirmar
   };
+
 
   return (
     <>
-      <TitleSection title="Confirmación y transporte" />
-      <ConfirmationContainer>
+      <CardComponent>
+        <CardIcon>
+          <ConfirmationIcon />
+        </CardIcon>
         <TitleText>¡Allí nos vemos!</TitleText>
         <Typography variant="body1" sx={{ marginTop: '20px', color: '#855D41' }}>
           Estamos agradecidos con su presencia y nos encantará contar con ustedes en ese día tan especial.
@@ -90,28 +111,40 @@ const Confirmation = () => {
         <ConfirmButton onClick={handleOpen}>
           Confirmar asistencia
         </ConfirmButton>
-      </ConfirmationContainer>
+      </CardComponent>
       <Modal open={open} onClose={handleClose}>
         <ModalContainer>
           <CloseButton onClick={handleClose}>
             <CloseIcon />
           </CloseButton>
+          <CardIcon>
+            <VerifiedIconStyled />
+          </CardIcon>
           <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#855D41', marginBottom: '20px' }}>
-            Agradecemos tu asistencia
+            ¡Gracias por venir!
           </Typography>
           <Typography variant="body1" sx={{ marginBottom: '20px', color: '#855D41' }}>
-            No queremos que te preocupes por nada. Habrá autobús para ir al evento y varios turnos de vuelta.
+            Y ... como queremos que no te preocupes por nada. Habrá autobús para ir al evento y varios turnos de vuelta.
+          </Typography>
+        
+          <Typography variant="body2" sx={{ marginBottom: '30px', color: '#855D41' }}>
+            ¿Necesitas transporte?, sólo marca la casilla.
           </Typography>
           <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
-            <BusIcon />
             <FormControlLabel
               control={<Checkbox checked={needsTransport} onChange={() => setNeedsTransport(!needsTransport)} />}
               label="Necesito transporte"
             />
           </Box>
-          <Typography variant="body2" sx={{ marginBottom: '30px', color: '#855D41' }}>
-            Si necesitas transporte, marca la casilla.
-          </Typography>
+          {
+            needsTransport && (
+              <>
+                ¡Nosotros te llevamos!
+                <img src={busGif} alt="Autobús" style={{ width: '100%', height: 'auto', marginBottom: '20px' }} />
+              </>
+            )
+          }
+         <h3> Confirmar asistencia con ...</h3>
           <Box sx={{ display: 'flex', justifyContent: 'center' }}>
             <IconButtonStyled onClick={() => handleSendMessage('+34687665131')}> {/* Reemplaza con el número del novio */}
               <AccountCircleIcon sx={{ fontSize: '4rem' }} />
