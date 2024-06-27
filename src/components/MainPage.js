@@ -10,6 +10,8 @@ import Party from './Party';
 import Confirmation from './Confirmation';
 import Detail from './Detail';
 import backgroundImage from '../assets/example.jpg'; // Asegúrate de que la ruta sea correcta
+import quotes from '../assets/quotes.png';
+import musicFile from '../assets/music.mp3'; // Asegúrate de que la ruta sea correcta
 import '../styles.css'; // Asegúrate de importar el CSS aquí
 
 const MainContainer = styled(Box)({
@@ -62,7 +64,7 @@ const DateTypography = styled(Typography)({
   display: 'inline-block', // Para ajustar el ancho del borde a solo el contenido
 });
 
-const FloatingButton = styled(IconButton)({
+const FloatingButton = styled(IconButton)(({ musicPlaying }) => ({
   position: 'fixed',
   bottom: '20px',
   right: '20px',
@@ -71,7 +73,8 @@ const FloatingButton = styled(IconButton)({
   '&:hover': {
     backgroundColor: '#b36b53',
   },
-});
+  animation: musicPlaying ? 'heartbeat 4.5s infinite' : 'none',
+}));
 
 const MenuButton = styled(IconButton)({
   position: 'fixed',
@@ -86,41 +89,56 @@ const MenuButton = styled(IconButton)({
 
 const MainPage = () => {
   const [musicPlaying, setMusicPlaying] = React.useState(true);
+  const audioRef = React.useRef(new Audio(musicFile));
+
+  React.useEffect(() => {
+    const audio = audioRef.current;
+    audio.loop = true;
+    audio.volume = 0.15;
+    if (musicPlaying) {
+      audio.play();
+    } else {
+      audio.pause();
+    }
+  }, [musicPlaying]);
 
   const toggleMusic = () => {
     setMusicPlaying(!musicPlaying);
   };
 
-
   return (
     <MainContainer>
-        <AppBar position="fixed" sx={{ background: 'transparent', boxShadow: 'none' }}>
-            <Toolbar>
-            <MenuButton edge="end" color="inherit" aria-label="menu">
-                <MenuIcon />
-            </MenuButton>
-            </Toolbar>
-        </AppBar>
-        <BackgroundImageContainer />
-        <DateTypography style={{marginTop: '24%'}}variant="h6">27.09.2024</DateTypography>
-        <ContentBox>
+      <AppBar position="fixed" sx={{ background: 'transparent', boxShadow: 'none' }}>
+        <Toolbar>
+          <MenuButton edge="end" color="inherit" aria-label="menu">
+            <MenuIcon />
+          </MenuButton>
+        </Toolbar>
+      </AppBar>
+      <BackgroundImageContainer />
+      <DateTypography style={{marginTop: '24%'}} variant="h6">27.09.2024</DateTypography>
+      <ContentBox>
         <AmpersandSymbol>&</AmpersandSymbol>
         <Typography variant="h2" sx={{ fontWeight: 'bold', fontSize: '3rem', position: 'relative', zIndex: 1, marginTop: 2 }}>
-            FRAN
+          FRAN
         </Typography>
         <Typography variant="h2" sx={{ fontWeight: 'bold', fontSize: '3rem', position: 'relative', zIndex: 1 }}>
-            LAURA
+          LAURA
         </Typography>
       </ContentBox>
-      <Typography variant="subtitle1" sx={{ mt: 2, fontStyle: 'italic', position: 'relative', zIndex: 1 }}>
-        "Todos somos mortales, hasta el primer beso y la segunda copa de vino."
-      </Typography>
+      <Box mt={4}>
+        <img src={quotes} width={'40px'}/>
+        <Typography variant="subtitle1" sx={{fontStyle: 'italic', position: 'relative', zIndex: 1 }}>
+          Todos somos mortales, hasta el primer beso y la segunda copa de vino. 
+        </Typography>
+        <img src={quotes} width={'40px'} style={{rotate: '180deg'}}/>
+      </Box>
       <Countdown eventDate="2024-09-27T19:30:00" />
       <Ceremony />
       <Party />
       <Confirmation />
-        <Detail />
-      <FloatingButton onClick={toggleMusic}>
+      <Detail />
+      <FloatingButton musicPlaying={musicPlaying} onClick={toggleMusic}>
         {musicPlaying ? <PauseIcon /> : <MusicNoteIcon />}
       </FloatingButton>
     </MainContainer>

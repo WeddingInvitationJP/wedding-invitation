@@ -78,9 +78,11 @@ const TitleText = styled(Typography)({
   color: '#855D41',
 });
 
+const accountNumberEVN = process.env.REACT_APP_ACCOUNT_NUMBER;
+
 const Detail = () => {
   const [open, setOpen] = useState(false);
-  const [accountNumber] = useState('12345678901234567890');
+  const [accountNumber] = useState(accountNumberEVN);
   const [copyMessage, setCopyMessage] = useState('');
 
   const handleOpen = () => setOpen(true);

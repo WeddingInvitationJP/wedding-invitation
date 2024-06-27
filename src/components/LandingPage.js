@@ -2,6 +2,8 @@ import React from 'react';
 import { Box, Button, Typography } from '@mui/material';
 import { styled } from '@mui/system';
 import { motion } from 'framer-motion';
+import floralHeader from '../assets/floral_cabecera.png';
+
 //import backgroundImage from '../assets/landing-background.jpg'; // Asegúrate de que la ruta sea correcta
 
 const LandingContainer = styled(Box)({
@@ -10,6 +12,7 @@ const LandingContainer = styled(Box)({
   alignItems: 'center',
   justifyContent: 'center',
   height: '100vh',
+  backgroundColor: 'rgb(255, 245, 232)',
  // background: `url(${backgroundImage}) no-repeat center center`,
   backgroundSize: 'cover',
   textAlign: 'center',
@@ -30,10 +33,10 @@ const LandingButton = styled(Button)({
 
 const BackgroundSymbol = styled(Typography)({
   position: 'absolute',
-  fontSize: '12rem',
+  fontSize: '15rem',
   color: '#855D41',
   opacity: 0.1,
-  top: '44%',
+  top: '57%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
 });
@@ -41,16 +44,19 @@ const BackgroundSymbol = styled(Typography)({
 const LandingPage = ({ onEnter }) => {
   return (
     <LandingContainer>
-      <BackgroundSymbol variant="h1">&</BackgroundSymbol>
-      <Typography variant="h5">Bienvenidos a la invitación de</Typography>
-      <Box sx={{ mb: 10, position: 'relative', zIndex: 1 }}>
-        <Typography variant="h2" sx={{ fontWeight: 'bold', fontSize: '3rem', marginTop: 2 }}>
-          FRAN
-        </Typography>
-        <Typography variant="h2" sx={{ fontWeight: 'bold', fontSize: '3rem', marginTop: 3 }}>
-          LAURA
-        </Typography>
-      </Box>
+      <>
+        <img width={'110%'} src={floralHeader} />
+        <BackgroundSymbol variant="h2">&</BackgroundSymbol>
+        <Typography variant="h5">Bienvenidos a la invitación de</Typography>
+        <Box sx={{ mb: 5, position: 'relative', zIndex: 1 }}>
+          <Typography variant="h3" sx={{ fontSize: '8rem', fontFamily: 'Cosmopolitan Script, sans-serif',  }}>
+            Fran
+          </Typography>
+          <Typography variant="h3" sx={{ fontSize: '8rem', fontFamily: 'Cosmopolitan Script, sans-serif' }}>
+            Laura
+          </Typography>
+        </Box>
+      </>
       <Typography variant="subtitle1">La música de fondo es parte de la experiencia</Typography>
       <motion.div
         initial={{ opacity: 1 }}
@@ -58,7 +64,7 @@ const LandingPage = ({ onEnter }) => {
         exit={{ opacity: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <LandingButton variant="contained" style={{ fontFamily: "'Cinzel', serif",}} onClick={onEnter}>
+        <LandingButton variant="contained" style={{}} onClick={onEnter}>
           Ingresar
         </LandingButton>
       </motion.div>

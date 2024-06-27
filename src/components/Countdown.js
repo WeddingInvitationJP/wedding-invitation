@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Typography } from '@mui/material';
 import { styled } from '@mui/system';
-//import heartIcon from '../assets/heart.png'; // Asegúrate de que la ruta sea correcta
 
 const CountdownContainer = styled(Box)({
   display: 'flex',
@@ -26,7 +25,6 @@ const FlowerDecoration = styled(Box)({
   transform: 'translateX(-50%)',
   width: '50px',
   height: '50px',
-  backgroundImage: 'url(../assets/flower.png)', // Asegúrate de que la ruta sea correcta
   backgroundSize: 'cover',
   backgroundRepeat: 'no-repeat',
 });
