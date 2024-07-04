@@ -58,7 +58,7 @@ const LandingPage = ({ onEnter }) => {
   return (
     <LandingContainer>
       <>
-        <img width={"110%"} src={floralHeader} />
+        <img width={"110%"} alt="floralheader" src={floralHeader} />
         <Typography variant="h5">Bienvenidos a la invitación de</Typography>
         <NamesContainer>
           <BackgroundSymbol variant="h2">&</BackgroundSymbol>
