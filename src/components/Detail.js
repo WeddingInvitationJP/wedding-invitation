@@ -14,15 +14,6 @@ import CardGiftcardIcon from "@mui/icons-material/CardGiftcard";
 import { CardComponent } from "./cards/CardComponent";
 import { CardIcon } from "./cards/CardIcon";
 
-const DetailContainer = styled(Box)({
-  padding: "20px",
-  backgroundColor: "#fff",
-  borderRadius: "10px",
-  boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
-  margin: "20px 0",
-  textAlign: "center",
-});
-
 const ThankYouText = styled(Typography)({
   color: "#855D41",
 });
@@ -55,14 +46,6 @@ const CloseButton = styled(IconButton)({
   position: "absolute",
   top: "10px",
   right: "10px",
-});
-
-const IconButtonStyled = styled(IconButton)({
-  color: "#d28e79",
-  margin: "20px",
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
 });
 
 const CopyMessage = styled(Typography)({
