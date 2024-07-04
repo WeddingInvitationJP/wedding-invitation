@@ -4,8 +4,6 @@ import { styled } from "@mui/system";
 import { motion } from "framer-motion";
 import floralHeader from "../assets/floral_cabecera.png";
 
-//import backgroundImage from '../assets/landing-background.jpg'; // Asegúrate de que la ruta sea correcta
-
 const LandingContainer = styled(Box)({
   display: "flex",
   flexDirection: "column",
@@ -13,7 +11,6 @@ const LandingContainer = styled(Box)({
   justifyContent: "center",
   height: "100vh",
   backgroundColor: "rgb(255, 245, 232)",
-  // background: `url(${backgroundImage}) no-repeat center center`,
   backgroundSize: "cover",
   textAlign: "center",
   padding: "0 20px",
@@ -36,9 +33,25 @@ const BackgroundSymbol = styled(Typography)({
   fontSize: "15rem",
   color: "#855D41",
   opacity: 0.1,
-  top: "57%",
+  top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
+  pointerEvents: "none", // Evitar interferencia con otros elementos
+});
+
+const NamesContainer = styled(Box)({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
+  position: "relative",
+  zIndex: 1,
+  marginBottom: "20px", // Añadir espacio debajo de los nombres
+});
+
+const NameTypography = styled(Typography)({
+  fontSize: "8rem",
+  fontFamily: "Cosmopolitan Script, sans-serif",
 });
 
 const LandingPage = ({ onEnter }) => {
@@ -46,28 +59,12 @@ const LandingPage = ({ onEnter }) => {
     <LandingContainer>
       <>
         <img width={"110%"} src={floralHeader} />
-        <BackgroundSymbol variant="h2">&</BackgroundSymbol>
         <Typography variant="h5">Bienvenidos a la invitación de</Typography>
-        <Box sx={{ mb: 2, position: "relative", zIndex: 1 }}>
-          <Typography
-            variant="h3"
-            sx={{
-              fontSize: "8rem",
-              fontFamily: "Cosmopolitan Script, sans-serif",
-            }}
-          >
-            Fran
-          </Typography>
-          <Typography
-            variant="h3"
-            sx={{
-              fontSize: "8rem",
-              fontFamily: "Cosmopolitan Script, sans-serif",
-            }}
-          >
-            Laura
-          </Typography>
-        </Box>
+        <NamesContainer>
+          <BackgroundSymbol variant="h2">&</BackgroundSymbol>
+          <NameTypography variant="h3">Fran</NameTypography>
+          <NameTypography variant="h3">Laura</NameTypography>
+        </NamesContainer>
       </>
       <Typography variant="subtitle1">
         La música de fondo es parte de la experiencia
@@ -78,7 +75,7 @@ const LandingPage = ({ onEnter }) => {
         exit={{ opacity: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <LandingButton variant="contained" style={{}} onClick={onEnter}>
+        <LandingButton variant="contained" onClick={onEnter}>
           Entrar
         </LandingButton>
       </motion.div>

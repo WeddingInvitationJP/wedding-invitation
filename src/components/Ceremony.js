@@ -21,8 +21,8 @@ const Ceremony = () => {
   const handleAddToCalendar = () => {
     const event = {
       title: 'Boda Fran y Laura - El Invernadero Eventos, Benicassim',
-      start: '2024-05-15T17:00:00',
-      end: '2024-05-15T23:00:00',
+      start: '2024-09-27T19:30:00',
+      end: '2024-09-28T04:30:00',
       location: 'El Invernadero - Arrecife, Av. Gimeno Tomas, 36, 12560 Benicàssim, Castellón',
     };
 
@@ -57,6 +57,7 @@ const Ceremony = () => {
         <LocationOnIcon sx={{ color: '#d28e79', fontSize: '2rem', marginBottom: '10px' }} />
         <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#855D41' }}>LUGAR</Typography>
           <Typography variant="body1">El Invernadero - Arrecife</Typography>
+          <Typography variant="body1">Benicassim</Typography>
           <Button
             variant="contained"
             sx={{ marginTop: '10px', backgroundColor: '#d28e79', color: '#fff', width: '80%' }}

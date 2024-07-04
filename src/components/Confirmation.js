@@ -122,7 +122,9 @@ const Confirmation = () => {
 
   useEffect(() => {
     if (needsTransport && contentRef.current) {
-      contentRef.current.scrollTop = contentRef.current.scrollHeight;
+      setTimeout(()=> {
+        contentRef.current.scrollTop = contentRef.current.scrollHeight;
+      }, 1300)
     }
   }, [needsTransport]);
 

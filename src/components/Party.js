@@ -8,6 +8,7 @@ import LinkIcon from '@mui/icons-material/Link';
 import CloseIcon from '@mui/icons-material/Close';
 import { CardComponent } from './cards/CardComponent';
 import { CardIcon } from './cards/CardIcon';
+import Swal from 'sweetalert2';
 
 const TitleText = styled(Typography)({
   fontWeight: 'bold',
@@ -80,11 +81,43 @@ const Party = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const handleSubmit = () => {
-    const email = 'example@example.com'; // Reemplaza con tu correo electrónico
-    const subject = 'Sugerencia de Canción';
-    const body = `Nombre: ${name}%0A%0ACanción y autor: ${song}%0A%0AEnlace: ${link}`;
-    window.open(`mailto:${email}?subject=${subject}&body=${body}`);
+  const handleSubmit = async () => {
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('song', song);
+    formData.append('link', link);
+
+    try {
+      const response = await fetch('https://formspree.io/f/xrbzgabv', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json'
+        },
+        body: formData
+      });
+      if (response.ok) {
+        Swal.fire({
+          title: 'Éxito',
+          text: 'Sugerencia enviada con éxito',
+          icon: 'success',
+          confirmButtonText: 'Cerrar'
+        });
+      } else {
+        Swal.fire({
+          title: 'Error',
+          text: 'Hubo un problema al enviar la sugerencia',
+          icon: 'error',
+          confirmButtonText: 'Cerrar'
+        });
+      }
+    } catch (error) {
+      Swal.fire({
+        title: 'Error',
+        text: 'Hubo un error al enviar la sugerencia',
+        icon: 'error',
+        confirmButtonText: 'Cerrar'
+      });
+    }
     handleClose();
   };
 
