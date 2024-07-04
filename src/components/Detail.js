@@ -68,9 +68,13 @@ const TitleText = styled(Typography)({
 
 const accountNumberENV = process.env.REACT_APP_ACCOUNT_NUMBER;
 
+if (!accountNumberENV) {
+  console.error("REACT_APP_ACCOUNT_NUMBER no está definido");
+}
+
 const Detail = () => {
   const [open, setOpen] = useState(false);
-  const [accountNumber] = useState(accountNumberENV);
+  const [accountNumber] = useState(accountNumberENV || "");
   const [copyMessage, setCopyMessage] = useState("");
 
   const formattedAccountNumber = accountNumber.replace(/(.{4})/g, "$1 "); // Formatea con espacios cada 4 dígitos
