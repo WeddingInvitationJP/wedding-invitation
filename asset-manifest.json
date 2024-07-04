@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/wedding-invitation/static/css/main.46d34c37.css",
-    "main.js": "/wedding-invitation/static/js/main.563464c0.js",
+    "main.js": "/wedding-invitation/static/js/main.500c3143.js",
     "static/js/453.66636984.chunk.js": "/wedding-invitation/static/js/453.66636984.chunk.js",
     "static/media/fran-laura-cl.jpg": "/wedding-invitation/static/media/fran-laura-cl.ac15220339c05bbf61e1.jpg",
     "static/media/music.mp3": "/wedding-invitation/static/media/music.4306b1b657b052333251.mp3",
@@ -10,11 +10,11 @@
     "static/media/quotes.png": "/wedding-invitation/static/media/quotes.058d8ff06cef46157d43.png",
     "index.html": "/wedding-invitation/index.html",
     "main.46d34c37.css.map": "/wedding-invitation/static/css/main.46d34c37.css.map",
-    "main.563464c0.js.map": "/wedding-invitation/static/js/main.563464c0.js.map",
+    "main.500c3143.js.map": "/wedding-invitation/static/js/main.500c3143.js.map",
     "453.66636984.chunk.js.map": "/wedding-invitation/static/js/453.66636984.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.46d34c37.css",
-    "static/js/main.563464c0.js"
+    "static/js/main.500c3143.js"
   ]
 }
