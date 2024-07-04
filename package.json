@@ -26,7 +26,7 @@
     "eject": "react-scripts eject",
     "env": "node env-config.js",
     "predeploy": "dotenv -e .env npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build -r https://${GH_PAT}@github.com/francaste2/wedding-invitation.git"
   },
   "eslintConfig": {
     "extends": [
