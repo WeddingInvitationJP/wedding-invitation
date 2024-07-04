@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Typography, Button, Modal, TextField, IconButton, InputAdornment } from '@mui/material';
+import { Box, Typography, Button, Modal, TextField, IconButton, InputAdornment, Snackbar, Alert } from '@mui/material';
 import { styled } from '@mui/system';
 import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
 import PersonIcon from '@mui/icons-material/Person';
@@ -8,7 +8,6 @@ import LinkIcon from '@mui/icons-material/Link';
 import CloseIcon from '@mui/icons-material/Close';
 import { CardComponent } from './cards/CardComponent';
 import { CardIcon } from './cards/CardIcon';
-import Swal from 'sweetalert2';
 
 const TitleText = styled(Typography)({
   fontWeight: 'bold',
@@ -77,6 +76,9 @@ const Party = () => {
   const [name, setName] = useState('');
   const [song, setSong] = useState('');
   const [link, setLink] = useState('');
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState('');
+  const [snackbarSeverity, setSnackbarSeverity] = useState('success');
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -96,29 +98,25 @@ const Party = () => {
         body: formData
       });
       if (response.ok) {
-        Swal.fire({
-          title: 'Éxito',
-          text: 'Sugerencia enviada con éxito',
-          icon: 'success',
-          confirmButtonText: 'Cerrar'
-        });
+        setSnackbarMessage('Sugerencia enviada con éxito');
+        setSnackbarSeverity('success');
       } else {
-        Swal.fire({
-          title: 'Error',
-          text: 'Hubo un problema al enviar la sugerencia',
-          icon: 'error',
-          confirmButtonText: 'Cerrar'
-        });
+        setSnackbarMessage('Hubo un problema al enviar la sugerencia');
+        setSnackbarSeverity('error');
       }
     } catch (error) {
-      Swal.fire({
-        title: 'Error',
-        text: 'Hubo un error al enviar la sugerencia',
-        icon: 'error',
-        confirmButtonText: 'Cerrar'
-      });
+      setSnackbarMessage('Hubo un error al enviar la sugerencia');
+      setSnackbarSeverity('error');
     }
+    setSnackbarOpen(true);
     handleClose();
+  };
+
+  const handleSnackbarClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setSnackbarOpen(false);
   };
 
   return (
@@ -198,6 +196,15 @@ const Party = () => {
           </SuggestButton>
         </ModalContainer>
       </Modal>
+      <Snackbar
+        open={snackbarOpen}
+        autoHideDuration={1500}
+        onClose={handleSnackbarClose}
+      >
+        <Alert onClose={handleSnackbarClose} severity={snackbarSeverity} sx={{ width: '100%' }}>
+          {snackbarMessage}
+        </Alert>
+      </Snackbar>
     </>
   );
 };

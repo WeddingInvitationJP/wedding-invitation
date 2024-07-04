@@ -23,7 +23,7 @@ const MainContainer = styled(Box)({
   textAlign: "center",
   padding: "0 20px",
   fontFamily: "'Cinzel', serif",
-  color: "#855D41", // Color marrón cálido
+  color: "#855D41",
   position: "relative",
 });
 
