@@ -19,15 +19,6 @@ import { launchConfetti } from "./utils/confeti";
 import { CardComponent } from "./cards/CardComponent";
 import { CardIcon } from "./cards/CardIcon";
 
-const ConfirmationContainer = styled(Box)({
-  padding: "20px",
-  backgroundColor: "#fff",
-  borderRadius: "10px",
-  boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
-  margin: "20px 0",
-  textAlign: "center",
-});
-
 const TitleText = styled(Typography)({
   fontWeight: "bold",
   fontSize: "1.5rem",
