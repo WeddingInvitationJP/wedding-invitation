@@ -21,6 +21,14 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Print environment variables  # Paso temporal para ver las variables
+        run: |
+          echo "REACT_APP_PHONE_FRAN=$REACT_APP_PHONE_FRAN"
+          echo "REACT_APP_PHONE_LAURA=$REACT_APP_PHONE_LAURA"
+        env:
+          REACT_APP_PHONE_FRAN: ${{ secrets.REACT_APP_PHONE_FRAN }}
+          REACT_APP_PHONE_LAURA: ${{ secrets.REACT_APP_PHONE_LAURA }}
+
       - name: Build project
         env:
           REACT_APP_ACCOUNT_NUMBER: ${{ secrets.REACT_APP_ACCOUNT_NUMBER }}
