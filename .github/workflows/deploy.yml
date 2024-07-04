@@ -22,6 +22,10 @@ jobs:
         run: npm install
 
       - name: Build project
+        env:
+          REACT_APP_ACCOUNT_NUMBER: ${{ secrets.REACT_APP_ACCOUNT_NUMBER }}
+          REACT_APP_PHONE_FRAN: ${{ secrets.REACT_APP_PHONE_FRAN }}
+          REACT_APP_PHONE_LAURA: ${{ secrets.REACT_APP_PHONE_LAURA }}
         run: npm run build
 
       - name: Configure Git
