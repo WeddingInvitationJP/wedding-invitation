@@ -147,14 +147,14 @@ const MainPage = () => {
         </Typography>
       </ContentBox>
       <Box mt={4}>
-        <img src={quotes} width={"40px"} />
+        <img src={quotes} alt="quotes" width={"40px"} />
         <Typography
           variant="subtitle1"
           sx={{ fontStyle: "italic", position: "relative", zIndex: 1 }}
         >
           Todos somos mortales, hasta el primer beso y la segunda copa de vino.
         </Typography>
-        <img src={quotes} width={"40px"} style={{ rotate: "180deg" }} />
+        <img src={quotes} alt="quotes2" width={"40px"} style={{ rotate: "180deg" }} />
       </Box>
       <Countdown eventDate="2024-09-27T19:30:00" />
       <Ceremony id="ceremony" />
