@@ -8,7 +8,7 @@ import Ceremony from "./Ceremony";
 import Party from "./Party";
 import Confirmation from "./Confirmation";
 import Detail from "./Detail";
-import backgroundImage from "../assets/fran-laura-color.jpg"; // Asegúrate de que la ruta sea correcta
+import backgroundImage from "../assets/fran-laura-cl.jpg"; // Asegúrate de que la ruta sea correcta
 import quotes from "../assets/quotes.png";
 import musicFile from "../assets/music.mp3"; // Asegúrate de que la ruta sea correcta
 import "../styles.css"; // Asegúrate de importar el CSS aquí
