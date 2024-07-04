@@ -29,12 +29,6 @@ const FlowerDecoration = styled(Box)({
   backgroundRepeat: 'no-repeat',
 });
 
-const HeartIcon = styled('img')({
-  width: '20px',
-  height: '20px',
-  marginTop: '10px',
-});
-
 const TimeContainer = styled(Box)({
   display: 'flex',
   justifyContent: 'space-around',
