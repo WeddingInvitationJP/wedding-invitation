@@ -83,20 +83,8 @@ const FloatingButton = styled(IconButton)(({ musicPlaying }) => ({
   animation: musicPlaying ? "heartbeat 4.5s infinite" : "none",
 }));
 
-const MenuButton = styled(IconButton)({
-  position: "fixed",
-  top: "20px",
-  right: "20px",
-  backgroundColor: "#d28e79",
-  color: "#fff",
-  "&:hover": {
-    backgroundColor: "#b36b53",
-  },
-});
-
 const MainPage = () => {
   const [musicPlaying, setMusicPlaying] = React.useState(true);
-  const [menuAnchor, setMenuAnchor] = React.useState(null);
   const audioRef = React.useRef(new Audio(musicFile));
 
   React.useEffect(() => {
